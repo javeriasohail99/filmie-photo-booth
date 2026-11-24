@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/svg+xml" href="images/filmie-icon.png" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff8f0" />
+    <meta
+      name="description"
+      content="Filmie — a little online photo booth for forever memories."
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    />
+    <title>Filmie ♡ — Little moments, forever memories</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Filmie home"
+          ><span class="brand-mark">♡</span> filmie<span class="brand-dot"
+            >.</span
+          ></a
+        >
+        <span class="top-note"
+          >a tiny place for big memories <span>✷</span></span
+        >
+        <a class="top-link" href="#how-it-works">how it works <span>↗</span></a>
+      </header>
+
+      <main>
+        <section class="hero" id="home">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="sparkle">✳</span> YOUR LITTLE ONLINE PHOTO BOOTH
+            </p>
+            <h1>
+              Little moments,<br /><em>forever</em> memories<span class="pink"
+                >.</span
+              >
+            </h1>
+            <p class="hero-description">
+              A little click, a little magic, and a photo strip full of you.
+              Make something lovely today.
+            </p>
+            <button class="primary-button" id="start-button">
+              Step inside <span>♡</span>
+            </button>
+            <div class="hero-foot">
+              <span class="tiny-heart">♥</span> no account · no uploads · just
+              memories
+            </div>
+          </div>
+          <div class="hero-art" aria-label="Decorative photo booth preview">
+            <div class="floating-star star-one">✦</div>
+            <div class="floating-star star-two">✧</div>
+            <div class="photo-stack">
+              <div class="mini-photo mini-photo-back">
+                <span>♡</span><small>filmie memories</small>
+              </div>
+              <div class="mini-photo mini-photo-front">
+                <div class="mini-photo-image">
+                  <span class="sun">☼</span><span class="face">☺</span
+                  ><span class="cheek left"></span
+                  ><span class="cheek right"></span>
+                </div>
+                <div class="mini-caption">a day to remember ♡</div>
+                <div class="mini-date">24 · 11 · 26</div>
+              </div>
+            </div>
+            <div class="sticker sticker-bow">୨୧</div>
+            <div class="sticker sticker-camera">📷</div>
+            <div class="hero-caption">
+              your own little photo booth <span>♡</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="studio-section" id="studio">
+          <div class="section-heading">
+            <p class="eyebrow">THE PHOTO BOOTH IS OPEN</p>
+            <h2>Let's make a <em>memory.</em></h2>
+            <p>
+              Get comfy, find your best light, and let's take some pictures.
+            </p>
+          </div>
+
+          <div class="studio-grid">
+            <section class="camera-card panel">
+              <div class="panel-heading">
+                <div>
+                  <span class="step-label">01 / THE CAMERA</span>
+                  <h3>Strike a pose!</h3>
+                </div>
+                <span class="live-pill"><i></i> YOUR STUDIO</span>
+              </div>
+              <div class="camera-wrap">
+                <video
+                  id="camera"
+                  autoplay
+                  playsinline
+                  muted
+                  aria-label="Live camera preview"
+                ></video>
+                <canvas id="capture-canvas" hidden></canvas>
+                <div class="camera-placeholder" id="camera-placeholder">
+                  <div class="camera-icon">📸</div>
+                  <strong>Your camera moment awaits</strong>
+                  <span>Allow camera access when your browser asks.</span>
+                  <button class="secondary-button" id="enable-camera">
+                    Turn on camera ♡
+                  </button>
+                </div>
+                <div
+                  class="camera-countdown"
+                  id="countdown"
+                  aria-live="assertive"
+                ></div>
+                <span class="camera-corner corner-a"></span
+                ><span class="camera-corner corner-b"></span>
+              </div>
+              <div class="camera-actions">
+                <button
+                  class="icon-button"
+                  id="switch-camera"
+                  title="Switch camera"
+                  aria-label="Switch camera"
+                >
+                  ↻
+                </button>
+                <button class="capture-button" id="capture-button" disabled>
+                  <span>●</span> Take photo
+                </button>
+                <button
+                  class="icon-button"
+                  id="timer-button"
+                  title="Toggle 3 second timer"
+                  aria-pressed="false"
+                >
+                  3s
+                </button>
+              </div>
+              <p class="privacy-note">
+                <span>🔒</span> Your photos stay on this device. Filmie never
+                uploads them.
+              </p>
+            </section>
+
+            <aside class="settings-column">
+              <section class="panel setting-card">
+                <span class="step-label">02 / YOUR SESSION</span>
+                <h3>How many snaps?</h3>
+                <div
+                  class="choice-row"
+                  role="group"
+                  aria-label="Number of photos"
+                >
+                  <button
+                    class="choice active"
+                    data-count="4"
+                    aria-pressed="true"
+                  >
+                    4 <small>snaps</small>
+                  </button>
+                  <button class="choice" data-count="6" aria-pressed="false">
+                    6 <small>snaps</small>
+                  </button>
+                  <button class="choice" data-count="8" aria-pressed="false">
+                    8 <small>snaps</small>
+                  </button>
+                </div>
+                <label class="field-label" for="filter-select"
+                  >A little filter magic</label
+                >
+                <select id="filter-select" class="select-control">
+                  <option value="none">Original · natural</option>
+                  <option value="soft">Soft blush</option>
+                  <option value="warm">Golden hour</option>
+                  <option value="mono">Vintage B&W</option>
+                  <option value="dreamy">Dreamy lavender</option>
+                </select>
+                <label class="field-label" for="frame-select"
+                  >Photo strip style</label
+                >
+                <select id="frame-select" class="select-control">
+                  <option value="cream">Vanilla cream</option>
+                  <option value="pink">Blush pink</option>
+                  <option value="lavender">Lavender dream</option>
+                  <option value="berry">Berry vintage</option>
+                </select>
+              </section>
+              <section class="panel progress-card">
+                <div class="progress-top">
+                  <span class="step-label">YOUR PHOTO STRIP</span
+                  ><strong id="photo-progress">0 / 4</strong>
+                </div>
+                <div class="progress-track">
+                  <span id="progress-fill"></span>
+                </div>
+                <div
+                  class="thumbnail-grid"
+                  id="thumbnail-grid"
+                  aria-live="polite"
+                >
+                  <div class="empty-thumb">♡</div>
+                  <div class="empty-thumb">♡</div>
+                  <div class="empty-thumb">♡</div>
+                  <div class="empty-thumb">♡</div>
+                </div>
+                <button class="text-button" id="retake-last" disabled>
+                  ↶ Retake last photo
+                </button>
+                <button
+                  class="primary-button full-button"
+                  id="make-strip"
+                  disabled
+                >
+                  Make my photo strip <span>✧</span>
+                </button>
+              </section>
+            </aside>
+          </div>
+        </section>
+
+        <section class="result-section" id="result" hidden>
+          <div class="section-heading">
+            <p class="eyebrow">A LITTLE SOMETHING TO KEEP</p>
+            <h2>Made with <em>love.</em></h2>
+            <p>Your memories, all in one little strip.</p>
+          </div>
+          <div class="result-layout">
+            <div class="print-stage">
+              <div class="printer">
+                <div class="printer-slot"></div>
+                <div class="printer-light"></div>
+                <span>filmie mini printer ♡</span>
+              </div>
+              <div class="print-output" id="print-output">
+                <img id="final-image" alt="Your completed Filmie photo strip" />
+              </div>
+              <p class="print-caption">
+                freshly printed just for you <span>✧</span>
+              </p>
+            </div>
+            <div class="panel edit-card">
+              <span class="step-label">03 / THE FINISHING TOUCHES</span>
+              <h3>Make it yours.</h3>
+              <label class="field-label" for="caption-input"
+                >Add a little note</label
+              >
+              <input
+                class="text-control"
+                id="caption-input"
+                maxlength="45"
+                placeholder="a day to remember ♡"
+              />
+              <label class="field-label" for="sticker-select"
+                >Add a sticker</label
+              >
+              <select class="select-control" id="sticker-select">
+                <option value="">No sticker</option>
+                <option value="♡">Heart ♡</option>
+                <option value="୨୧">Bow ୨୧</option>
+                <option value="✦">Star ✦</option>
+                <option value="☁">Cloud ☁</option>
+                <option value="✿">Flower ✿</option>
+              </select>
+              <button class="secondary-button full-button" id="update-strip">
+                Update my strip ↻
+              </button>
+              <div class="divider"><span>KEEP YOUR MEMORY</span></div>
+              <button class="primary-button full-button" id="download-png">
+                Download PNG ↓
+              </button>
+              <button class="secondary-button full-button" id="print-strip">
+                Print my photos ♡
+              </button>
+              <button class="text-button full-text-button" id="start-again">
+                Start a new session ↗
+              </button>
+              <p class="privacy-note">
+                <span>♡</span> Downloaded directly to your device. Nothing is
+                stored online.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="how-section" id="how-it-works">
+          <p class="eyebrow">IT'S AS EASY AS ONE, TWO, THREE</p>
+          <h2>Little steps, <em>lovely keepsakes.</em></h2>
+          <div class="how-grid">
+            <article>
+              <span class="how-number">01</span>
+              <div class="how-icon">📷</div>
+              <h3>Get camera-ready</h3>
+              <p>Allow camera access and pick your favourite filter.</p>
+            </article>
+            <article>
+              <span class="how-number">02</span>
+              <div class="how-icon">♡</div>
+              <h3>Capture the moment</h3>
+              <p>
+                Take 4, 6, or 8 snaps. Retake the last one whenever you like.
+              </p>
+            </article>
+            <article>
+              <span class="how-number">03</span>
+              <div class="how-icon">🎀</div>
+              <h3>Keep it forever</h3>
+              <p>Style your strip, then download or print it.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <a class="brand footer-brand" href="#"
+          >filmie<span class="brand-dot">.</span> ♡</a
+        >
+        <p>made for your little moments <span>✧</span></p>
+        <small>YOUR PHOTOS STAY YOURS · FILMIE 2026</small>
+      </footer>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog class="preview-dialog" id="preview-dialog">
+      <button
+        class="dialog-close"
+        id="close-preview"
+        aria-label="Close enlarged photo"
+      >
+        ×
+      </button>
+      <img id="enlarged-image" alt="Enlarged photo strip preview" />
+    </dialog>
+  </body>
+</html>
