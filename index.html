@@ -1,26 +1,40 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- SEO -->
     <title>Filmie – Cute Online Photo Booth & Photo Strip Maker</title>
 
     <meta
       name="description"
-      content="Create adorable photo strips with Filmie! Capture moments using your camera, explore fun filters, choose photo layouts, and download your own photo booth memories."
-    />
-
-    <meta
-      name="keywords"
-      content="Filmie, online photo booth, virtual photo booth, photo strip maker, online photo strips, cute photo booth, photo filters"
+      content="Create cute photo strips with Filmie! Capture moments, try fun filters, choose layouts, and download your memories."
     />
 
     <meta name="author" content="Javeria Sohail" />
-
     <meta name="robots" content="index, follow" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff8f0" />
 
     <link rel="canonical" href="https://filmie-photo-booth.vercel.app/" />
 
+    <!-- Google Site Name -->
+    <meta property="og:site_name" content="Filmie" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Filmie",
+        "alternateName": "Filmie Photo Booth",
+        "url": "https://filmie-photo-booth.vercel.app/"
+      }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/filmie-icon.png" />
+
+    <!-- Open Graph / Social Sharing -->
     <meta
       property="og:title"
       content="Filmie – Little Moments, Forever Memories"
@@ -36,6 +50,7 @@
       content="https://filmie-photo-booth.vercel.app/images/filmie-icon.png"
     />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Filmie – Online Photo Booth" />
     <meta
@@ -47,28 +62,26 @@
       content="https://filmie-photo-booth.vercel.app/images/filmie-icon.png"
     />
 
-    <link rel="icon" type="image/svg+xml" href="images/filmie-icon.png" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#fff8f0" />
-    <meta
-      name="description"
-      content="Filmie — a little online photo booth for forever memories."
-    />
+    <!-- Security -->
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
     />
-    <title>Filmie ♡ — Little moments, forever memories</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Stylesheet and JavaScript -->
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js" defer></script>
   </head>
+
   <body>
     <div class="page-shell">
       <header class="topbar">
